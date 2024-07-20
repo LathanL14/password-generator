@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator and Assessor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="header">Lathan's Password Tools</h1>
+        </header>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h1 class="card-title">Password Assessor</h1>
+                        <p>Enter your password to see its strength:</p>
+                        <input type="text" id="passwordInput" class="form-control" placeholder="Enter your password" oninput="assessPassword()">
+                        <div id="assessor-meter" class="mt-3">
+                            <p>Password Score: <span id="assessorScore">0</span></p>
+                            <p>Password Strength: <span id="assessorStrength" class="font-weight-bold strength-vulnerable">Vulnerable</span></p>
+                            <p id="commonPasswordWarning" class="text-danger">Warning: This is a commonly used password and is not secure!</p>
+                        </div>
+                        <div id="passwordTips" class="text-primary mt-3"></div>
+                        <p class="mt-3" style="color: yellow;">Your passwords are never stored. Even if they were, we have no idea who you are!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h1 class="card-title">Password Generator</h1>
+                        <div class="info">
+                            <h2 class="h5">What Makes a Password Secure?</h2>
+                            <p>A secure password typically has the following characteristics:</p>
+                            <ul class="list-unstyled">
+                                <li>At least 12 characters long</li>
+                                <li>Includes uppercase and lowercase letters</li>
+                                <li>Contains numbers</li>
+                                <li>Has special characters (e.g., !, @, #, $)</li>
+                                <li>Avoids using easily guessable information (e.g., names, birthdays)</li>
+                            </ul>
+                        </div>
+                        <label for="length">Password Length: <span id="lengthValue">12</span></label>
+                        <input type="range" id="length" name="length" min="6" max="24" value="12" oninput="updateLengthValue(this.value)" class="custom-range">
+                        
+                        <div class="form-group mt-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="uppercase" checked>
+                                <label class="form-check-label" for="uppercase">Include Uppercase Letters</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="lowercase" checked>
+                                <label class="form-check-label" for="lowercase">Include Lowercase Letters</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="numbers" checked>
+                                <label class="form-check-label" for="numbers">Include Numbers</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="special" checked>
+                                <label class="form-check-label" for="special">Include Special Characters</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="generateButton">Generate Password</button>
+                        <div class="password-container mt-3">
+                            <p id="password" class="font-weight-bold"></p>
+                            <img src="Images/Copy Icon.png" alt="Copy to Clipboard" class="copy-icon" onclick="copyPassword()">
+                        </div>
+                        
+                        <div id="security-meter" class="mt-3">
+                            <p>Password Strength: <span id="strength" class="font-weight-bold strength-vulnerable">Weak</span></p>
+                        </div>
+                        <p id="warning" class="text-danger">Warning: Password is too short!</p>
+                        <p id="reminder" class="reminder">Reminder: Store your passwords securely, use a password manager, and avoid using the same password for multiple accounts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Created by Lathan Latty</p>
+    </footer>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
